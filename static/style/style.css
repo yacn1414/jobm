@@ -1,0 +1,7 @@
+.dy{
+    background: url('../image/banner-bg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 500px;
+    opacity: 0.5 !important;
+}
