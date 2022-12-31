@@ -4,5 +4,6 @@ urlpatterns = [
     path('work-now',views.workNow),
     path('work-end',views.workEnd),
     path('jobs',views.allJobs),
-    path('<int:id>',views.visit),
-]
+    path('<int:id>/<str:employer>',views.visit),
+    
+    ]
