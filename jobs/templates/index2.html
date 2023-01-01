@@ -23,11 +23,20 @@
       <hr>
       <p class="card-text">{{card.description}}</p>
       <p> تعداد نفرات : {{card.countem}}</p>
-      <h4>{{card.status}}</h4>
       کارفرما : {{card.idemployer}}
       {% if staff == 'emploee' %}
+      
+      {% if card.status == 'open' %}
+      
+      <br>
+      <br>
+      <h6>{{card.status}}</h6>
       <hr>
       <a href="/{{card.id}}/{{card.idemployer.user}}" class="card-link">درخواست پروژه</a>
+      {% else %}
+      <h6>{{card.status}}</h6>
+
+      {% endif %}
       {% endif %}
     </div>
   </div>

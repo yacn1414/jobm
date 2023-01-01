@@ -10,6 +10,7 @@ urlpatterns= [
     path('authlogin',views.authlogin,name="auth"),
     path('add',views.add),
     path('adda',views.adda),
-    path('procces',views.procces)
+    path('procces',views.procces),
+    path('work/<int:id>',views.ended)
 
 ]

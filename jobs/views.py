@@ -31,8 +31,12 @@ def visit(request,id,employer):
         users = User.objects.get(username=employer)
         userss = customUser.objects.get(user__id=request.user.id)
         sabtjob.objects.create(id_emploee=userss,id_employer=users,id_job=jjob)
-        if jobs.objects.get(id=id).countem > 0:
-            jobs.objects.filter(id=id).update(countem = --1)
+        if jobs.objects.get(id=id).countem >= 0:
+            minze = jobs.objects.get(id=id)
+            minze.countem -= 1
+            minze.save()
+
         else:
-            jobs.objects.filter(id=id).delete()
-        return redirect('../')
+            jobs.objects.filter(id=id)
+            jobs.status = "close"
+        return redirect('/jobs')

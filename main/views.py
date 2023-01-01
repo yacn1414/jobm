@@ -81,9 +81,17 @@ def adda(request):
         fss = FileSystemStorage()
         file = fss.save("static/image/jobs/" + image.name, image)
         file_url = fss.url(file)
-        jobs.objects.create(idemployer=idem,title=title,description=description,countem=countperson,image=image)
+        jobs.objects.create(idemployer=idem,title=title,description=description,countem=countperson,image=image,status="open")
     return render(request,'add.html')
 def procces(request):
-    job = sabtjob.objects.filter(id_job__idemployer=request.user.id)
-    
-    return render(request,"process.html",{"jobs":job})
+    job = sabtjob.objects.filter(id_job__idemployer__user__id=request.user.id)
+    a = {}
+    for jo in job:
+        if jo.vaziat == "open":
+            a += jo
+    return render(request,"process.html",{"jobs":a})
+def ended(request,id):
+    data = sabtjob.objects.get(id=id)
+    data.vaziat = "close"
+    data.save()
+    return redirect('/procces')

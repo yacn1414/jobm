@@ -15,8 +15,9 @@ class jobs(models.Model):
         return self.title
 
 class sabtjob(models.Model):
-	id_emploee = models.ForeignKey(customUser,on_delete = models.CASCADE,related_name='+')
-	id_employer = models.ForeignKey(User,on_delete = models.CASCADE)
-	id_job = models.ForeignKey(jobs,on_delete = models.CASCADE)
-	def __str__(self):
-		return self.id_job.title
+    id_emploee = models.ForeignKey(customUser,on_delete = models.CASCADE,related_name='+')
+    vaziat = models.CharField(max_length=25,blank=True,null=True)
+    id_employer = models.ForeignKey(User,on_delete = models.CASCADE)
+    id_job = models.ForeignKey(jobs,on_delete = models.CASCADE)
+    def __str__(self):
+	    return self.id_job.title
